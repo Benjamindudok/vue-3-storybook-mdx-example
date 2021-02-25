@@ -1,0 +1,29 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { ArgsTable } from '@storybook/addon-docs/blocks';
+import MyButton from './Button.vue';
+
+<Meta title="Example/Button mdx" component={MyButton} />
+
+# Button with composition API
+
+With `MDX` we can define a story for `Hello World` right in the middle of our
+Markdown documentation.
+
+export const Template = (args) => ({
+  // Components used in your story `template` are defined in the `components` object
+  components: { MyButton },
+  // The story's `args` need to be mapped into the template through the `setup()` method
+  setup() {
+    return { args };
+  },
+  // And then the `args` are bound to your component with `v-bind="args"`
+  template: '<my-button v-bind="args" />',
+})
+
+<Canvas>
+  <Story name="Default">
+    {Template.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="^" />

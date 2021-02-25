@@ -1,31 +1,29 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { ArgsTable } from '@storybook/addon-docs/blocks';
-import HelloWorld from '../components/HelloWorld.vue';
+import MyButton from './Button-class.vue';
 
-<Meta title="Example/Hello world mdx" component={HelloWorld} />
+<Meta title="Example/Button-class mdx" component={MyButton} />
 
-# Hello World
+# Button with vue-class-component style syntax
 
 With `MDX` we can define a story for `Hello World` right in the middle of our
 Markdown documentation.
 
 export const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
-  components: { HelloWorld },
+  components: { MyButton },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: '<hello-world v-bind="args" />',
+  template: '<my-button v-bind="args" />',
 })
 
 <Canvas>
-  <Story name="Default" args={{
-    msg: 'This is an example message from typescript'
-  }}>
-    {Template.bind()}
+  <Story name="Default" >
+    {Template.bind({})}
   </Story>
 </Canvas>
 
-<ArgsTable of={HelloWorld} />
+<ArgsTable story="^" />
